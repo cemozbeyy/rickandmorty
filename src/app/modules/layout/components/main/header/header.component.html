@@ -4,11 +4,11 @@
     </div>
     <div class="rck-header_forms">
         <form>
-            <div>
+            <div class="rck-header_forms__name">
                 <input type="text" id="name" name="name" placeholder="Name" required>
             </div>
-            <div>
-                <input type="text" id="name" name="name" placeholder="Type" required>
+            <div class="rck-header_forms__type">
+                <input type="text" id="type" name="type" placeholder="Type" required>
             </div>
             <div>
                 <select id="status" name="status" required>
@@ -18,14 +18,27 @@
                 </select>
             </div>
             <div>
-                <label for="gender">Gender:</label>
                 <select id="gender" name="gender" required>
+                    <option value="male">Gender</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
                 </select>
             </div>
-            <button type="submit">Submit</button>
+            <!-- burada ki svgler assete eklenip img ile çağır -->
+            <button class="rck-header_forms__search" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15px" heigth="15px" viewBox="0 0 512 512">
+                    <path fill="#ffffff"
+                        d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                </svg>
+                <p> Search</p>
+            </button>
+            <button class="rck-header_forms__clear" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15px" heigth="15px" viewBox="0 0 448 512">
+                    <path fill="#ffffff"
+                        d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" />
+                </svg>
+            </button>
         </form>
 
 

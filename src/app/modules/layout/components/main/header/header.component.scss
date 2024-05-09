@@ -1,14 +1,75 @@
 .rck-header {
     display: flex;
+
+    margin: 10px;
+    background-color: #c0c6c04d;
+    height: 50px;
+    border-radius: 4px;
+    border: 1px solid #cecece;
     &_title {
         h4 {
             font-weight: 500;
             font-family: sans-serif;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin: auto 1.875rem auto 1.25rem;
         }
     }
     &_forms {
         form {
             display: flex;
+            height: 100%;
+            div {
+                margin: auto;
+            }
+            input {
+                padding: 0.5rem 0.3125rem;
+                border-radius: 5px;
+                margin: 0 0.625rem;
+                border: 1px solid #cecece;
+                width: 190px;
+            }
+            select {
+                padding: 0.5rem 0.3125rem;
+                border-radius: 5px;
+                color: #7b7b7b;
+                margin: 0 0.625rem;
+                border: 1px solid #aeadad;
+            }
+        }
+        &__search {
+            padding: 10px 0.625rem;
+            display: flex;
+            align-items: center;
+            border-radius: 0.3125rem;
+
+            border: none;
+            margin: auto 0.625rem;
+            color: #fff;
+            background-color: rgb(55, 98, 199);
+            p {
+                margin-left: 0.625rem;
+            }
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(55, 98, 199, 0.921);
+            }
+        }
+        &__clear {
+            padding: 10px 0.7375rem;
+            border: none;
+            margin: auto 0.325rem;
+            border-radius: 0.3125rem;
+            background-color: rgb(227, 53, 53);
+            svg {
+                margin: auto;
+                display: flex;
+            }
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(227, 53, 53, 0.886);
+            }
         }
     }
 }
