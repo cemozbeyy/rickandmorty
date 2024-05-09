@@ -1,6 +1,13 @@
-<div>
-    ads
-    <nav>das
-
+<div class="rck-layout">
+    <nav class="rck-layout_sidenav">
+        <rck-sidenav></rck-sidenav>
     </nav>
+    <main class="rck-layout_main">
+        <header class="rck-layout_main__header">
+            <rck-header></rck-header>
+        </header>
+        <div class="rck-layout_main__content">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
 </div>

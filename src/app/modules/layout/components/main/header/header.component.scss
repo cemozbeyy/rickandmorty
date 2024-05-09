@@ -1,0 +1,14 @@
+.rck-header {
+    display: flex;
+    &_title {
+        h4 {
+            font-weight: 500;
+            font-family: sans-serif;
+        }
+    }
+    &_forms {
+        form {
+            display: flex;
+        }
+    }
+}

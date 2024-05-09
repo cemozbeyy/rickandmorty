@@ -1,0 +1,31 @@
+.rck-sidenav {
+    border-right: 1px solid #bcbcbc98;
+    font-family: sans-serif;
+    height: 100vh;
+    &_title {
+        padding: 1.25rem;
+        h3 {
+            font-weight: 400;
+        }
+    }
+    &_list {
+        ul {
+            list-style-type: none;
+            li {
+                height: 2.1875rem;
+                align-items: center;
+                display: flex;
+                padding-left: 20px;
+                margin-left: 1px;
+                font-weight: 400;
+                &:hover {
+                    cursor: pointer;
+                    background-color: #f0f0f02d;
+                }
+            }
+            .active {
+                border-left: 6px solid #4b8ebe;
+            }
+        }
+    }
+}

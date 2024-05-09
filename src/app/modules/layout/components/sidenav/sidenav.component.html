@@ -1,1 +1,15 @@
-sidenav
+<nav class="rck-sidenav">
+    <div class="rck-sidenav_title">
+        <h3>
+            Rick And Morty API
+        </h3>
+    </div>
+    <div class="rck-sidenav_list">
+        <ul>
+            <li routerLink="/mainPage" [ngClass]="{'active': currentUrl == '/mainPage'}">
+                Anasayfa</li>
+            <li routerLink="/charactersPage" [ngClass]="{'active': currentUrl == '/charactersPage'}">Characters
+            </li>
+        </ul>
+    </div>
+</nav>
