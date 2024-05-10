@@ -3,26 +3,27 @@
         <h4>Filter Characters</h4>
     </div>
     <div class="rck-header_forms">
-        <form>
+        <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
             <div class="rck-header_forms__name">
-                <input type="text" id="name" name="name" placeholder="Name" required>
+                <input type="text" id="name" name="name" placeholder="Name" formControlName="name">
             </div>
             <div class="rck-header_forms__type">
-                <input type="text" id="type" name="type" placeholder="Type" required>
+                <input type="text" id="type" name="type" placeholder="Type" formControlName="type">
             </div>
             <div>
-                <select id="status" name="status" required>
-                    <option value="active">Status</option>
-                    <option value="inactive">Inactive</option>
-                    <option value="pending">Pending</option>
+                <select id="status" name="status" formControlName="status">
+                    <option value="">Status</option>
+                    <option value="Alive">Alive</option>
+                    <option value="unknown">Unknown</option>
+                    <option value="Dead">Dead</option>
                 </select>
             </div>
             <div>
-                <select id="gender" name="gender" required>
-                    <option value="male">Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
+                <select id="gender" name="gender" formControlName="gender">
+                    <option value="">Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="unknown">Unknown</option>
                 </select>
             </div>
             <!-- burada ki svgler assete eklenip img ile çağır -->
@@ -33,7 +34,7 @@
                 </svg>
                 <p> Search</p>
             </button>
-            <button class="rck-header_forms__clear" type="submit">
+            <button class="rck-header_forms__clear" type="button" (click)="clearForm()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15px" heigth="15px" viewBox="0 0 448 512">
                     <path fill="#ffffff"
                         d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" />

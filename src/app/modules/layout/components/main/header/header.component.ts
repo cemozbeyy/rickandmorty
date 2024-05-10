@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MainService } from 'src/app/core/services/main.service';
 
 @Component({
     selector: 'rck-header',
@@ -8,9 +9,25 @@ import { FormControl, Validators } from '@angular/forms';
 })
 
 export class HeaderComponent implements OnInit {
-    emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
-    constructor() { }
+    filterForm!: FormGroup;
 
-    ngOnInit() { }
+    constructor(private formBuilder: FormBuilder, private mainService: MainService) { }
+
+    onSubmit() {
+        this.mainService.setFilters(this.filterForm.value);
+    }
+
+    clearForm() {
+        this.filterForm.reset();
+    }
+    ngOnInit() {
+        //default değer boş
+        this.filterForm = this.formBuilder.group({
+            name: [''],
+            type: [''],
+            status: [''],
+            gender: ['']
+        });
+    }
 }
