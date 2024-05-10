@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CharactersService } from './characters.service';
+import { Character } from 'src/app/core/models/characterModels';
 
 @Component({
     selector: 'rck-characters',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class CharactersComponent implements OnInit {
-    constructor() { }
+
+    getAllCharacters: Character[] = []
+
+    constructor(private characterService: CharactersService) {
+        characterService.getAllCharacters().subscribe(a => {
+            this.getAllCharacters = a.results
+
+        })
+    }
 
     ngOnInit() { }
 }

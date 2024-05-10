@@ -4,15 +4,18 @@ import { SidenavComponent } from './components/sidenav';
 import { HeaderComponent, MainComponent } from './components/main';
 import { LayoutRoutingModule } from './layout.routing.module';
 import { CommonModule } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
+
 import { ReactiveFormsModule } from '@angular/forms';
+import { CharactersComponent } from './components/main/container-viewer';
+
 
 
 const COMPONENTS = [
     LayoutComponent,
     SidenavComponent,
     HeaderComponent,
-    MainComponent
+    MainComponent,
+    CharactersComponent
 ];
 
 
@@ -20,7 +23,6 @@ const COMPONENTS = [
     imports: [
         LayoutRoutingModule,
         CommonModule,
-        MatInputModule,
         ReactiveFormsModule
     ],
     exports: [],
