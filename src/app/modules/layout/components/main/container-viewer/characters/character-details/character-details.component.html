@@ -1,0 +1,37 @@
+<div class="container" *ngIf="characterDetails">
+    <div class="col-12">
+        <div class="rck-card">
+            <div class="rck-card-image">
+                <img [src]='characterDetails.image' alt="Avatar">
+
+            </div>
+            <div class="rck-card-container">
+                <div class="rck-card-container__title">
+                    <h2> {{characterDetails.name}}</h2>
+                </div>
+                <div class="rck-card-container__details">
+                    <div class="rck-card-container__details--item">
+                        <b>Status:</b>
+                        <h4> {{characterDetails.status}}</h4>
+                    </div>
+                    <div class="rck-card-container__details--item">
+                        <b>Location:</b>
+                        <h4> {{characterDetails.location.name}}</h4>
+                    </div>
+                    <div class="rck-card-container__details--item">
+                        <b>Species:</b>
+                        <h4> {{characterDetails.species}}</h4>
+                    </div>
+                    <div class="rck-card-container__details--item">
+                        <b>Gender:</b>
+                        <h4>{{characterDetails.gender}}</h4>
+                    </div>
+                    <div class="rck-card-container__details--item">
+                        <b>Type:</b>
+                        <h4>{{characterDetails.type || '?'}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

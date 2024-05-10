@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiHttpService } from 'src/app/core/services/api.service';
-import { CharacterResponse } from 'src/app/core/models/characterModels';
+import { Character, CharacterResponse } from 'src/app/core/models/characterModels';
 
 @Injectable({ providedIn: 'root' })
 export class CharactersService {
@@ -10,5 +10,7 @@ export class CharactersService {
     getAllCharacters(): Observable<CharacterResponse> {
         return this.apiService.get<CharacterResponse>('/character');
     }
-
+    getSingleCharacterDetails(id: string): Observable<Character> {
+        return this.apiService.get(`/character/${id}`)
+    }
 }

@@ -11,13 +11,22 @@ import { Character } from 'src/app/core/models/characterModels';
 export class CharactersComponent implements OnInit {
 
     getAllCharacters: Character[] = []
+    showCharacterDetails: boolean = false;
 
     constructor(private characterService: CharactersService) {
-        characterService.getAllCharacters().subscribe(a => {
-            this.getAllCharacters = a.results
-
-        })
     }
-
-    ngOnInit() { }
+    hideCharacters() {
+        this.showCharacterDetails = true;
+    }
+    loadCharacters() {
+        this.characterService.getAllCharacters().subscribe(response => {
+            this.getAllCharacters = response.results;
+        });
+    }
+    ngOnInit() {
+        this.loadCharacters();
+        window.onpopstate = () => {
+            this.showCharacterDetails = false
+        };
+    }
 }

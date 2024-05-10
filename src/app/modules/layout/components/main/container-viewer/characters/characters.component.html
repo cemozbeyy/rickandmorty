@@ -1,9 +1,9 @@
-<div class="container">
+<div *ngIf="!showCharacterDetails" class="container" (click)="hideCharacters()">
     <div class="row">
         <div *ngFor="let character of getAllCharacters" class="col-3">
-            <div class="rck-card">
+            <div class="rck-card" [routerLink]="['characterDetails', character.id]">
                 <div class="rck-card-image">
-                    <img [src]='character.image' alt="Avatar" style="width:100%">
+                    <img [src]='character.image' alt="Avatar">
                 </div>
                 <div class="rck-card-container">
                     <div class="rck-card-container__title">
@@ -30,3 +30,4 @@
 
     </div>
 </div>
+<router-outlet *ngIf="showCharacterDetails"></router-outlet>

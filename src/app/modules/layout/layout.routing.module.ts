@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-import { CharactersComponent, MainPageComponent } from './components/main/container-viewer';
+import { CharacterDetailComponent, CharactersComponent, MainPageComponent } from './components/main/container-viewer';
 
 
 const ROUTES: Routes = [
@@ -11,7 +11,13 @@ const ROUTES: Routes = [
         children: [
             { path: '', redirectTo: '/mainPage', pathMatch: 'full' },
             { path: 'mainPage', component: MainPageComponent },
-            { path: 'charactersPage', component: CharactersComponent }
+            {
+                path: 'charactersPage',
+                component: CharactersComponent,
+                children: [
+                    { path: 'characterDetails/:id', component: CharacterDetailComponent }
+                ]
+            }
         ]
     },
 
