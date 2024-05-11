@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
         this.filterForm.reset();
     }
     ngOnInit() {
-        //default değer boş
         this.filterForm = this.formBuilder.group({
             name: [''],
             type: [''],

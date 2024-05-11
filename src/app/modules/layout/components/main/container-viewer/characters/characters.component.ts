@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CharactersService } from './characters.service';
-import { Character } from 'src/app/core/models/characterModels';
+import { Character, CharacterResponse } from 'src/app/core/models/characterModels';
 import { MainService } from 'src/app/core/services/main.service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
+import { FilterModel } from 'src/app/core/models/filterModel';
 
 @Component({
     selector: 'rck-characters',
@@ -12,8 +13,9 @@ import { Subscription } from 'rxjs';
 
 export class CharactersComponent implements OnInit {
 
-    getAllCharacters: Character[] = []
+    getAllCharacters: (Character | null)[] = [];
     showCharacterDetails: boolean = false;
+    filtersSubscriptionDestroy?: Subscription
 
     constructor(private characterService: CharactersService, private mainService: MainService) {
     }
@@ -21,27 +23,35 @@ export class CharactersComponent implements OnInit {
         this.showCharacterDetails = true;
     }
 
-    loadCharacters(filters?: any) {
-        this.characterService.getAllCharacters().subscribe((response: any) => {
+    loadCharacters(filters?: FilterModel) {
+        this.characterService.getAllCharacters().subscribe((response: CharacterResponse) => {
             this.getAllCharacters = response.results
-                .map((character: any) => {
-                    if (
-                        (!filters.name || character.name.toLowerCase().includes(filters.name.toLowerCase())) && //isime göre
-                        (!filters.type || character.type === filters.type) && // türe göre
-                        (!filters.status || character.status === filters.status) && //yaşam durumuna göre
-                        (!filters.gender || character.gender === filters.gender) //Cinsiyete göre
-                    ) {
-                        return character;
+                .map((character: Character) => {
+                    if (filters) {
+                        if (
+                            (!filters.name || character.name.toLowerCase().includes(filters.name.toLowerCase())) && //isime göre
+                            (!filters.type || character.type === filters.type) && // türe göre
+                            (!filters.status || character.status === filters.status) && //yaşam durumuna göre
+                            (!filters.gender || character.gender === filters.gender) //Cinsiyete göre
+                        ) {
+                            return character;
+                        }
+                        else {
+                            return null;
+                        }
                     }
-                    return null;
+                    else {
+                        return character
+                    }
+
                 })
-                .filter((character: any) => character !== null); // null olmayanları filtreler
+                .filter((character: Character | null) => character !== null); // null olmayanları filtreler
         });
     }
 
     ngOnInit() {
         this.loadCharacters();
-        this.mainService.filters$.subscribe(filters => {
+        this.filtersSubscriptionDestroy = this.mainService.filters$.subscribe(filters => {
             this.loadCharacters(filters);
         });
         window.onpopstate = () => {
@@ -49,4 +59,7 @@ export class CharactersComponent implements OnInit {
         };
     }
 
+    ngOnDestroy() {
+        this.filtersSubscriptionDestroy?.unsubscribe()
+    }
 }

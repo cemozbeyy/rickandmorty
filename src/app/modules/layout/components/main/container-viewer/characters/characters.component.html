@@ -1,26 +1,26 @@
 <div *ngIf="!showCharacterDetails" class="container" (click)="hideCharacters()">
     <div class="row">
         <div *ngFor="let character of getAllCharacters" class="col-3">
-            <div class="rck-card" [routerLink]="['characterDetails', character.id]">
+            <div class="rck-card" [routerLink]="['characterDetails', character?.id]">
                 <div class="rck-card-image">
-                    <img [src]='character.image' alt="Avatar">
+                    <img [src]='character?.image' alt="Avatar">
                 </div>
                 <div class="rck-card-container">
                     <div class="rck-card-container__title">
-                        <h2> {{character.name}}</h2>
+                        <h2> {{character?.name}}</h2>
                     </div>
                     <div class="rck-card-container__details">
                         <div class="rck-card-container__details--item">
                             <b>Status:</b>
-                            <h4> {{character.status}}</h4>
+                            <h4> {{character?.status}}</h4>
                         </div>
                         <div class="rck-card-container__details--item">
                             <b>Species:</b>
-                            <h4> {{character.species}}</h4>
+                            <h4> {{character?.species}}</h4>
                         </div>
                         <div class="rck-card-container__details--item">
                             <b>Gender:</b>
-                            <h4>{{character.gender}}</h4>
+                            <h4>{{character?.gender}}</h4>
                         </div>
 
                     </div>
